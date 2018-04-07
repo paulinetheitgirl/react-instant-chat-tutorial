@@ -12,8 +12,20 @@ import ChatInput from './ChatInput';
 // then pass the data received from the server to other components to be
 // displayed
 class ChatApp extends React.Component {
+  constructor(props) {
+    super(props);
+    // set the initial state of messages so that it is not undefined on load
+    this.state = { messages: [] };
+  }
+  
   render() {
-    // Here we want to render the main chat application components
+    return (
+      <div className="container">
+        <h3>React Chat App</h3>
+        <Messages messages={this.state.messages} />
+        <ChatInput onSend={this.sendHandler} />
+      </div>
+    );
   }
 
 }
